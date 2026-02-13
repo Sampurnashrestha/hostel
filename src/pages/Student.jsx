@@ -4,12 +4,20 @@ import StudentTable from "../components/StudentTable";
 import AddStudentModal from "../components/AddStudentModal";
 import Room from "./Room";
 import { mockStudent } from "../mockData/mockData";
+import DeleteStudent from "../components/DeleteStudent";
 
-const head = ["Name", "Email", "Age", "Room", "Address", "Paid", "Pending"];
+const head = ["Name", "Email", "Age", "Room", "Address", "Paid", "Pending","Action"];
 
 
 const Student = () => {
   const [showModel, setShowModel] = useState(false);
+  
+  const [deleteStudent, setDeleteStudent] = useState(false);
+
+  const handleDelete =()=>{
+    setDeleteStudent(true)
+    setTimeout(()=>setDeleteStudent(false),3000)
+  }
 
   return (
     <div className="min-h-screen p-6 px-25">
@@ -31,10 +39,10 @@ const Student = () => {
         </div>
       </div>
 
-      <StudentTable student={mockStudent} heading={head} />
+      <StudentTable student={mockStudent} heading={head} onDelete={handleDelete} />
 
    
-
+      {deleteStudent && <DeleteStudent />}
       {showModel && <AddStudentModal onClose={() => setShowModel(false)} />}
     </div>
   );

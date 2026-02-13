@@ -1,6 +1,7 @@
 import React from "react";
+import { FaTrash } from "react-icons/fa"
 
-const StudentTable = ({ student, heading }) => {
+const StudentTable = ({ student, heading , onDelete}) => {
   return (
     <div className="bg-white rounded-xl shadow overflow-hidden">
       <table className="w-full ">
@@ -32,6 +33,10 @@ const StudentTable = ({ student, heading }) => {
               </td>
               <td className="px-6 py-4 font-bold text-red-600">
                 {s.pending} Rs
+              </td>
+              <td  className="flex justify-center items-center mt-3">
+             
+                <button className="flex items-center gap-1 bg-red-500 px-2 py-1 rounded-full text-white text-sm hover:scale-105 hover:bg-red-500 hover:shadow transition-transform duration-300" onClick={()=>onDelete()}> <FaTrash />Delete</button>
               </td>
             </tr>
           ))}

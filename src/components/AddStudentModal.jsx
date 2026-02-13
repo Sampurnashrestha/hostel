@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { X } from "lucide-react";
+import SuccessfullAddStudent from "./SuccessfullAddStudent";
 
 const AddStudentModal = ({ onClose }) => {
+  const [addedStudent, setAddedStudent] = useState(false);
+  const handleAdd = () => {
+    setAddedStudent(true);
+    setTimeout(() => setAddedStudent(false), 3000);
+  };
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6">
@@ -56,8 +62,10 @@ const AddStudentModal = ({ onClose }) => {
             >
               Cancel
             </button>
+            {addedStudent && <SuccessfullAddStudent />};
             <button
               type="button"
+              onClick={() => handleAdd()}
               className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
             >
               Save

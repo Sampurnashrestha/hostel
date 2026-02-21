@@ -23,7 +23,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className=" mx-70 my-30">
+    <div className="my-30 flex justify-center md:mx-70 md:my-30">
       <form
         onSubmit={handleLogin}
         className="bg-white w-90 p-8 rounded-xl shadow-2xl"
